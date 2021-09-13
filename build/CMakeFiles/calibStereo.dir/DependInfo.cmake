@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/wys/slam/camera-co-calib/calibStereo/stereo_calib.cpp" "/home/wys/slam/camera-co-calib/calibStereo/build/CMakeFiles/calibStereo.dir/stereo_calib.cpp.o"
+  "/home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp" "/home/wys/slam/camera-calib/calibstereo/build/CMakeFiles/calibStereo.dir/stereo_calib.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

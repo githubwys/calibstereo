@@ -129,4 +129,4 @@ CMakeFiles/calibStereo.dir/stereo_calib.cpp.o
  /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv2/xfeatures2d.hpp
  /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv2/xfeatures2d/cuda.hpp
  /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv2/xfeatures2d/nonfree.hpp
- /home/wys/slam/camera-co-calib/calibStereo/stereo_calib.cpp
+ /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp

@@ -37,7 +37,7 @@
 ../calib_imgs/seperate/right/1-21.jpg
 ../calib_imgs/seperate/right/1-22.jpg
 ../calib_imgs/seperate/right/1-23.jpg -->
-<!-- ../calib_imgs/seperate/left/1-03_roi.png
+../calib_imgs/seperate/left/1-03_roi.png
 ../calib_imgs/seperate/right/2-03.jpg
 ../calib_imgs/seperate/left/1-04_roi.png
 ../calib_imgs/seperate/right/2-04.jpg
@@ -72,14 +72,14 @@
 ../calib_imgs/seperate/left/1-22_roi.png
 ../calib_imgs/seperate/right/2-22.jpg
 ../calib_imgs/seperate/left/1-23_roi.png
-../calib_imgs/seperate/right/2-23.jpg -->
+../calib_imgs/seperate/right/2-23.jpg
 <!-- ../calib_imgs/1/2-03.jpg
 ../calib_imgs/1/1-03.png
 ../calib_imgs/1/2-04.jpg
 ../calib_imgs/1/1-04.png
 ../calib_imgs/1/2-05.jpg
 ../calib_imgs/1/1-05.png -->
-../calib_imgs/1/left1.jpg
+<!-- ../calib_imgs/1/left1.jpg
 ../calib_imgs/1/right1.jpg
 ../calib_imgs/1/left2.jpg
 ../calib_imgs/1/right2.jpg
@@ -136,7 +136,7 @@
 ../calib_imgs/1/left28.jpg
 ../calib_imgs/1/right28.jpg
 ../calib_imgs/1/left29.jpg
-../calib_imgs/1/right29.jpg
+../calib_imgs/1/right29.jpg -->
 
 
 </images>

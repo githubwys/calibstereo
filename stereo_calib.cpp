@@ -174,8 +174,8 @@ StereoCalib(const vector<string> &imagelist, Size boardSize, float squareSize, b
     cout << "Running stereo calibration ...\n";
 
     Mat cameraMatrix[2], distCoeffs[2]; //相机参数  畸变矩阵
-    cameraMatrix[0] = initCameraMatrix2D(objectPoints, imagePoints[0], imageSize, 0);
-    cameraMatrix[1] = initCameraMatrix2D(objectPoints, imagePoints[1], imageSize, 0);
+    // cameraMatrix[0] = initCameraMatrix2D(objectPoints, imagePoints[0], imageSize, 0);
+    // cameraMatrix[1] = initCameraMatrix2D(objectPoints, imagePoints[1], imageSize, 0);
     cv::Mat K1 = cv::Mat(cv::Matx33d(
         1643.23922244931, 0, 955.632389024248,
         0, 1646.60777233688, 491.359781135353,
@@ -190,29 +190,30 @@ StereoCalib(const vector<string> &imagelist, Size boardSize, float squareSize, b
     cv::Mat distCoeffs2 = cv::Mat(cv::Matx41d(
         -0.243547179711356, 0.183777511637158,
         -0.00165050761251720, -0.000625729681232135));
-    // cameraMatrix[0] = K1;
-    // cameraMatrix[1] = K2;
-    // distCoeffs[0] = distCoeffs1;
-    // distCoeffs[1] = distCoeffs2;
+    cameraMatrix[0] = K1;
+    cameraMatrix[1] = K2;
+    distCoeffs[0] = distCoeffs1;
+    distCoeffs[1] = distCoeffs2;
     cout << "objectPoints.at(1) = " << objectPoints.at(1) << endl;
     cout << "cameraMatrix[0] = " << cameraMatrix[0] << endl;
     cout << "cameraMatrix[1] = " << cameraMatrix[1] << endl;
     Mat R, T, E, F; //R旋转矩阵 T平移矩阵 E本征矩阵 F输出基本矩阵
 
-    //undistort
+    //undistort check
     //cv::undistort();
-    for (i = j = 0; i < nimages; i++)
-    {
-        for (k = 0; k < 2; k++) //依次寻找左右图片
-        {
-            const string &filename = imagelist[i * 2 + k];
-            Mat img = imread(filename, 0); //载入灰度图 0代表灰度图
-            cv::Mat undistortimage;
-            cv::undistort(img,undistortimage,cameraMatrix[k],distCoeffs[k]);
-            cv::imshow("undistortimage",undistortimage);
-            cv::waitKey(0);
-        }
-    }
+    // for (i = j = 0; i < nimages; i++)
+    // {
+    //     for (k = 0; k < 2; k++) //依次寻找左右图片
+    //     {
+    //         const string &filename = imagelist[i * 2 + k];
+    //         Mat img = imread(filename, 0); //载入灰度图 0代表灰度图
+    //         cv::Mat undistortimage;
+    //         cv::undistort(img,undistortimage,cameraMatrix[k],distCoeffs[k]);
+    //         cv::resize(undistortimage,undistortimage,cv::Size(undistortimage.cols / 2, undistortimage.rows / 2), 0, 0, CV_INTER_LINEAR);
+    //         cv::imshow(filename,undistortimage);
+    //         cv::waitKey(0);
+    //     }
+    // }
 
     //最关键的地方，求解校正后的相机参数
     //CALIB_FIX_INTRINSIC

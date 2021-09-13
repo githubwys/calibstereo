@@ -129,4 +129,4 @@ CMakeFiles/trimpictures.dir/trimpictures.cpp.o
  /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv2/xfeatures2d.hpp
  /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv2/xfeatures2d/cuda.hpp
  /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv2/xfeatures2d/nonfree.hpp
- /home/wys/slam/camera-co-calib/calibStereo/trimpictures.cpp
+ /home/wys/slam/camera-calib/calibstereo/trimpictures.cpp

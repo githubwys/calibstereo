@@ -1266,15 +1266,15 @@ opencv2/core/cuda.hpp
 opencv2/features2d.hpp
 /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv2/xfeatures2d/opencv2/features2d.hpp
 
-/home/wys/slam/camera-co-calib/calibStereo/stereo_calib.cpp
+/home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp
 opencv2/calib3d.hpp
-/home/wys/slam/camera-co-calib/calibStereo/opencv2/calib3d.hpp
+/home/wys/slam/camera-calib/calibstereo/opencv2/calib3d.hpp
 opencv2/imgcodecs.hpp
-/home/wys/slam/camera-co-calib/calibStereo/opencv2/imgcodecs.hpp
+/home/wys/slam/camera-calib/calibstereo/opencv2/imgcodecs.hpp
 opencv2/highgui.hpp
-/home/wys/slam/camera-co-calib/calibStereo/opencv2/highgui.hpp
+/home/wys/slam/camera-calib/calibstereo/opencv2/highgui.hpp
 opencv2/imgproc.hpp
-/home/wys/slam/camera-co-calib/calibStereo/opencv2/imgproc.hpp
+/home/wys/slam/camera-calib/calibstereo/opencv2/imgproc.hpp
 vector
 -
 string
