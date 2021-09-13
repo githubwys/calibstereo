@@ -194,7 +194,7 @@ StereoCalib(const vector<string> &imagelist, Size boardSize, float squareSize, b
     // cameraMatrix[1] = K2;
     // distCoeffs[0] = distCoeffs1;
     // distCoeffs[1] = distCoeffs2;
-    cout << "objectPoints.at(1) = " << objectPoints.at(1) << endl;
+    //cout << "objectPoints.at(1) = " << objectPoints.at(1) << endl;
     cout << "cameraMatrix[0] = " << cameraMatrix[0] << endl;
     cout << "cameraMatrix[1] = " << cameraMatrix[1] << endl;
     Mat R, T, E, F; //R旋转矩阵 T平移矩阵 E本征矩阵 F输出基本矩阵
