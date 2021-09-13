@@ -1,0 +1,25 @@
+left camera no.1 guangjiao
+roi:
+cameraParams_left_roi.ImageSize
+[1080,1920]
+
+cameraParams_left_roi.RadialDistortion
+-0.409946054902810	0.179241711483436
+
+cameraParams_left_roi.TangentialDistortion
+-0.000713866588082986	0.000617293005958004
+
+cameraParams_left_roi.IntrinsicMatrix
+1643.23922244931	0	0
+0	1646.60777233688	0
+955.632389024248	491.359781135353	1
+
+
+source:
+2688,1520
+cameraParams.IntrinsicMatrix
+1650.881598429339	0	1304.018708844735
+1.02492983296668	1657.611953327394	710.9575430508264
+0	0	1
+cameraParams.RadialDistortion：-0.386622964273540	0.140448460237694	0
+cameraParams.TangentialDistortion：-0.001892655673452	0.003579154765030
