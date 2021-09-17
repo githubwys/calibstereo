@@ -32,3 +32,6 @@ target_link_libraries(calibStereo LINK_PRIVATE ${OpenCV_LIBS})
 
 add_executable(trimpictures trimpictures.cpp)
 target_link_libraries(trimpictures ${OpenCV_LIBS})
+
+add_executable(png2jpg png2jpg.cpp)
+target_link_libraries(png2jpg ${OpenCV_LIBS})

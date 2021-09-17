@@ -1,4 +1,5 @@
 /home/wys/slam/camera-calib/calibstereo/build/CMakeFiles/edit_cache.dir
+/home/wys/slam/camera-calib/calibstereo/build/CMakeFiles/png2jpg.dir
 /home/wys/slam/camera-calib/calibstereo/build/CMakeFiles/calibStereo.dir
 /home/wys/slam/camera-calib/calibstereo/build/CMakeFiles/rebuild_cache.dir
 /home/wys/slam/camera-calib/calibstereo/build/CMakeFiles/trimpictures.dir

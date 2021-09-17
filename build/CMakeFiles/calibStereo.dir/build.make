@@ -60,15 +60,15 @@ include CMakeFiles/calibStereo.dir/flags.make
 CMakeFiles/calibStereo.dir/stereo_calib.cpp.o: CMakeFiles/calibStereo.dir/flags.make
 CMakeFiles/calibStereo.dir/stereo_calib.cpp.o: ../stereo_calib.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wys/slam/camera-calib/calibstereo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/calibStereo.dir/stereo_calib.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calibStereo.dir/stereo_calib.cpp.o -c /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp
+	/usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calibStereo.dir/stereo_calib.cpp.o -c /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp
 
 CMakeFiles/calibStereo.dir/stereo_calib.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calibStereo.dir/stereo_calib.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp > CMakeFiles/calibStereo.dir/stereo_calib.cpp.i
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp > CMakeFiles/calibStereo.dir/stereo_calib.cpp.i
 
 CMakeFiles/calibStereo.dir/stereo_calib.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calibStereo.dir/stereo_calib.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp -o CMakeFiles/calibStereo.dir/stereo_calib.cpp.s
+	/usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp -o CMakeFiles/calibStereo.dir/stereo_calib.cpp.s
 
 CMakeFiles/calibStereo.dir/stereo_calib.cpp.o.requires:
 

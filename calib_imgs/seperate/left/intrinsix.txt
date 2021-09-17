@@ -1,0 +1,26 @@
+right camera no.2
+cameraParams_right.RadialDistortion
+-0.243547179711356	0.183777511637158
+
+cameraParams_right.TangentialDistortion
+-0.00165050761251720	-0.000625729681232135
+
+cameraParams_right.IntrinsicMatrix
+1994.72443215177	0	0
+0	1998.44496010574	0
+881.901669489577	556.330703994452	1
+
+
+
+OpenCV   ： left camera 
+cameraParams_right.RadialDistortion
+-2.4352270240974530e-01	1.8469288881955251e-01
+
+cameraParams_right.TangentialDistortion
+-1.8951658401333046e-03	-8.6162043491556115e-04
+
+cameraParams_right.IntrinsicMatrix
+1.9937156242710637e+03	0	8.8059499438253215e+02
+0	1.9978872214999717e+03	5.5269502230818307e+02
+0	0	1
+

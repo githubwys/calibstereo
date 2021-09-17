@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<images>
+<!-- ../calib_imgs/seperate/left/2-03.jpg ../calib_imgs/seperate/right/1-03_roi.png
+../calib_imgs/seperate/left/2-04.jpg ../calib_imgs/seperate/right/1-04_roi.png
+../calib_imgs/seperate/left/2-05.jpg ../calib_imgs/seperate/right/1-05_roi.png
+../calib_imgs/seperate/left/2-06.jpg ../calib_imgs/seperate/right/1-06_roi.png
+../calib_imgs/seperate/left/2-10.jpg ../calib_imgs/seperate/right/1-10_roi.png
+../calib_imgs/seperate/left/2-11.jpg ../calib_imgs/seperate/right/1-11_roi.png
+../calib_imgs/seperate/left/2-12.jpg ../calib_imgs/seperate/right/1-12_roi.png
+../calib_imgs/seperate/left/2-13.jpg ../calib_imgs/seperate/right/1-13_roi.png
+../calib_imgs/seperate/left/2-14.jpg ../calib_imgs/seperate/right/1-14_roi.png
+../calib_imgs/seperate/left/2-15.jpg ../calib_imgs/seperate/right/1-15_roi.png
+../calib_imgs/seperate/left/2-16.jpg ../calib_imgs/seperate/right/1-16_roi.png
+../calib_imgs/seperate/left/2-17.jpg ../calib_imgs/seperate/right/1-17_roi.png
+../calib_imgs/seperate/left/2-18.jpg ../calib_imgs/seperate/right/1-18_roi.png
+../calib_imgs/seperate/left/2-19.jpg ../calib_imgs/seperate/right/1-19_roi.png
+../calib_imgs/seperate/left/2-20.jpg ../calib_imgs/seperate/right/1-20_roi.png
+../calib_imgs/seperate/left/2-21.jpg ../calib_imgs/seperate/right/1-21_roi.png
+../calib_imgs/seperate/left/2-22.jpg ../calib_imgs/seperate/right/1-22_roi.png
+../calib_imgs/seperate/left/2-23.jpg ../calib_imgs/seperate/right/1-23_roi.png
+../calib_imgs/seperate/left/2-23.jpg ../calib_imgs/seperate/right/1-23_roi.png -->
+
+<!-- ../calib_imgs/seperate/right/1-03_roi.png
+../calib_imgs/seperate/right/1-04_roi.png
+../calib_imgs/seperate/right/1-05_roi.png
+../calib_imgs/seperate/right/1-06_roi.png
+../calib_imgs/seperate/right/1-10_roi.png
+../calib_imgs/seperate/right/1-11_roi.png
+../calib_imgs/seperate/right/1-12_roi.png
+../calib_imgs/seperate/right/1-13_roi.png
+../calib_imgs/seperate/right/1-14_roi.png
+../calib_imgs/seperate/right/1-15_roi.png
+../calib_imgs/seperate/right/1-16_roi.png
+../calib_imgs/seperate/right/1-17_roi.png
+../calib_imgs/seperate/right/1-18_roi.png
+../calib_imgs/seperate/right/1-19_roi.png
+../calib_imgs/seperate/right/1-20_roi.png
+../calib_imgs/seperate/right/1-21_roi.png
+../calib_imgs/seperate/right/1-22_roi.png
+../calib_imgs/seperate/right/1-23_roi.png
+../calib_imgs/seperate/left/1-03.jpg
+../calib_imgs/seperate/left/1-04.jpg
+../calib_imgs/seperate/left/1-05.jpg
+../calib_imgs/seperate/left/1-06.jpg
+../calib_imgs/seperate/left/1-10.jpg
+../calib_imgs/seperate/left/1-11.jpg
+../calib_imgs/seperate/left/1-12.jpg
+../calib_imgs/seperate/left/1-13.jpg
+../calib_imgs/seperate/left/1-14.jpg
+../calib_imgs/seperate/left/1-15.jpg
+../calib_imgs/seperate/left/1-16.jpg
+../calib_imgs/seperate/left/1-17.jpg
+../calib_imgs/seperate/left/1-18.jpg
+../calib_imgs/seperate/left/1-19.jpg
+../calib_imgs/seperate/left/1-20.jpg
+../calib_imgs/seperate/left/1-21.jpg
+../calib_imgs/seperate/left/1-22.jpg
+../calib_imgs/seperate/left/1-23.jpg -->
+
+<!-- ../calib_imgs/1/2-03.jpg
+../calib_imgs/1/1-03.png
+../calib_imgs/1/2-04.jpg
+../calib_imgs/1/1-04.png
+../calib_imgs/1/2-05.jpg
+../calib_imgs/1/1-05.png -->
+../calib_imgs/1/left1.png
+../calib_imgs/1/right1.jpg
+../calib_imgs/1/left2.jpg
+../calib_imgs/1/right2.jpg
+../calib_imgs/1/left3.jpg
+../calib_imgs/1/right3.jpg
+../calib_imgs/1/left4.jpg
+../calib_imgs/1/right4.jpg
+../calib_imgs/1/left5.jpg
+../calib_imgs/1/right5.jpg
+../calib_imgs/1/left6.jpg
+../calib_imgs/1/right6.jpg
+../calib_imgs/1/left7.jpg
+../calib_imgs/1/right7.jpg
+../calib_imgs/1/left8.jpg
+../calib_imgs/1/right8.jpg
+../calib_imgs/1/left9.jpg
+../calib_imgs/1/right9.jpg
+../calib_imgs/1/left10.jpg
+../calib_imgs/1/right10.jpg
+../calib_imgs/1/left11.jpg
+../calib_imgs/1/right11.jpg
+../calib_imgs/1/left12.jpg
+../calib_imgs/1/right12.jpg
+../calib_imgs/1/left13.jpg
+../calib_imgs/1/right13.jpg
+../calib_imgs/1/left14.jpg
+../calib_imgs/1/right14.jpg
+../calib_imgs/1/left15.jpg
+../calib_imgs/1/right15.jpg
+../calib_imgs/1/left16.jpg
+../calib_imgs/1/right16.jpg
+../calib_imgs/1/left17.jpg
+../calib_imgs/1/right17.jpg
+../calib_imgs/1/left18.jpg
+../calib_imgs/1/right18.jpg
+../calib_imgs/1/left19.jpg
+../calib_imgs/1/right19.jpg
+../calib_imgs/1/left20.jpg
+../calib_imgs/1/right20.jpg
+../calib_imgs/1/left21.jpg
+../calib_imgs/1/right21.jpg
+../calib_imgs/1/left22.jpg
+../calib_imgs/1/right22.jpg
+../calib_imgs/1/left23.jpg
+../calib_imgs/1/right23.jpg
+../calib_imgs/1/left24.jpg
+../calib_imgs/1/right24.jpg
+../calib_imgs/1/left25.jpg
+../calib_imgs/1/right25.jpg
+../calib_imgs/1/left26.jpg
+../calib_imgs/1/right26.jpg
+../calib_imgs/1/left27.jpg
+../calib_imgs/1/right27.jpg
+../calib_imgs/1/left28.jpg
+../calib_imgs/1/right28.jpg
+../calib_imgs/1/left29.jpg
+../calib_imgs/1/right29.jpg
+
+
+</images>
+</opencv_storage>

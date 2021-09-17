@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/wys/slam/camera-calib/calibstereo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -isystem /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include -isystem /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv  -g   -o CMakeFiles/png2jpg.dir/png2jpg.cpp.o -c /home/wys/slam/camera-calib/calibstereo/png2jpg.cpp",
+  "file": "/home/wys/slam/camera-calib/calibstereo/png2jpg.cpp"
+},
+{
+  "directory": "/home/wys/slam/camera-calib/calibstereo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -isystem /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include -isystem /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv  -g   -o CMakeFiles/calibStereo.dir/stereo_calib.cpp.o -c /home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp",
+  "file": "/home/wys/slam/camera-calib/calibstereo/stereo_calib.cpp"
+},
+{
+  "directory": "/home/wys/slam/camera-calib/calibstereo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -isystem /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include -isystem /home/wys/pkg/opencv3.2/opencv-3.2.0/install/include/opencv  -g   -o CMakeFiles/trimpictures.dir/trimpictures.cpp.o -c /home/wys/slam/camera-calib/calibstereo/trimpictures.cpp",
+  "file": "/home/wys/slam/camera-calib/calibstereo/trimpictures.cpp"
+}
+]

@@ -130,7 +130,7 @@ StereoCalib(const vector<string> &imagelist, Size boardSize, float squareSize, b
                 //cv::waitKey(0);
                 //resize(cimg, cimg1, Size(), sf, sf, INTER_LINEAR_EXACT);//opencv version problem
                 resize(cimg, cimg1, Size(), sf, sf, INTER_LINEAR); //
-                imshow("corners", cimg1);
+                imshow("corners" + filename, cimg1);
                 //imshow("corners", cimg);
                 char c = (char)waitKey(500);
                 if (c == 27 || c == 'q' || c == 'Q') //Allow ESC to quit
@@ -174,33 +174,173 @@ StereoCalib(const vector<string> &imagelist, Size boardSize, float squareSize, b
     cout << "Running stereo calibration ...\n";
 
     Mat cameraMatrix[2], distCoeffs[2]; //相机参数  畸变矩阵
-    // cameraMatrix[0] = initCameraMatrix2D(objectPoints, imagePoints[0], imageSize, 0);
-    // cameraMatrix[1] = initCameraMatrix2D(objectPoints, imagePoints[1], imageSize, 0);
-    cv::Mat K1 = cv::Mat(cv::Matx33d(
-        1643.23922244931, 0, 955.632389024248,
-        0, 1646.60777233688, 491.359781135353,
-        0, 0, 1));
-    cv::Mat distCoeffs1 = cv::Mat(cv::Matx41d(
-        -0.409946054902810, 0.179241711483436,
-        -0.000713866588082986, 0.000617293005958004));
-    cv::Mat K2 = cv::Mat(cv::Matx33d(
-        1994.72443215177, 0, 881.901669489577,
-        0, 1998.44496010574, 556.330703994452,
-        0, 0, 1));
-    cv::Mat distCoeffs2 = cv::Mat(cv::Matx41d(
-        -0.243547179711356, 0.183777511637158,
-        -0.00165050761251720, -0.000625729681232135));
-    cameraMatrix[0] = K1;
-    cameraMatrix[1] = K2;
-    distCoeffs[0] = distCoeffs1;
-    distCoeffs[1] = distCoeffs2;
-    cout << "objectPoints.at(1) = " << objectPoints.at(1) << endl;
+
+    double rms1, rms2;
+    vector<Mat> rvecs, tvecs;
+    int flags = 0;
+
+    std::cout << "========initCameraMatrix2D========" << std::endl;
+    cameraMatrix[0] = initCameraMatrix2D(objectPoints, imagePoints[0], imageSize, 0);
     cout << "cameraMatrix[0] = " << cameraMatrix[0] << endl;
+    //cout << "distCoeffs[0] = " << distCoeffs[0] << endl;
+    cameraMatrix[1] = initCameraMatrix2D(objectPoints, imagePoints[1], imageSize, 0);
     cout << "cameraMatrix[1] = " << cameraMatrix[1] << endl;
+    //cout << "distCoeffs[1] = " << distCoeffs[1] << endl;
+    cv::Mat stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors;
+    // rms1 = calibrateCamera(objectPoints, imagePoints[0], imageSize,      //| CV_CALIB_FIX_K3 | CALIB_USE_LU
+    //                        cameraMatrix[0], distCoeffs[0], rvecs, tvecs, //distCoeffs:Output vector of distortion coefficients
+    //                        CV_CALIB_FIX_K3, TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 30, DBL_EPSILON));
+    // rms2 = calibrateCamera(objectPoints, imagePoints[1], imageSize,
+    //                        cameraMatrix[1], distCoeffs[1], rvecs, tvecs, //distCoeffs:Output vector of distortion coefficients
+    //                        CV_CALIB_FIX_K3, TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 30, DBL_EPSILON));
+    rms1 = calibrateCamera(objectPoints, imagePoints[0], imageSize,      //| CV_CALIB_FIX_K3 | CALIB_USE_LU
+                           cameraMatrix[0], distCoeffs[0], rvecs, tvecs, //distCoeffs:Output vector of distortion coefficients
+                           stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors,
+                           0, TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 40, DBL_EPSILON));
+    rms2 = calibrateCamera(objectPoints, imagePoints[1], imageSize,      //| CV_CALIB_FIX_K3 | CALIB_USE_LU
+                           cameraMatrix[1], distCoeffs[1], rvecs, tvecs, //distCoeffs:Output vector of distortion coefficients
+                           stdDeviationsIntrinsics, stdDeviationsExtrinsics, perViewErrors,
+                           0, TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 40, DBL_EPSILON));
+    std::cout << "========calibrateCamera========" << std::endl;
+    cout << "cameraMatrix[0] = " << cameraMatrix[0] << endl;
+    cout << "distCoeffs[0] = " << distCoeffs[0] << endl;
+    cout << "cameraMatrix[1] = " << cameraMatrix[1] << endl;
+    cout << "distCoeffs[1] = " << distCoeffs[1] << endl;
+
+    // // cv::Mat K1 = cv::Mat(cv::Matx33d(
+    // //     1643.23922244931, 0, 955.632389024248,
+    // //     0, 1646.60777233688, 491.359781135353,
+    // //     0, 0, 1));
+    // cv::Mat K1 = cv::Mat(cv::Matx33d(
+    //     1.9937156242710637e+03, 0., 8.8059499438253215e+02, 0.,
+    //     1.9978872214999717e+03, 5.5269502230818307e+02, 0., 0., 1.));
+    // // cv::Mat distCoeffs1 = cv::Mat(cv::Matx41d(
+    // //     -0.409946054902810, 0.179241711483436,
+    // //     -0.000713866588082986, 0.000617293005958004));
+    // // cv::Mat distCoeffs1 = cv::Mat(cv::Matx41d(
+    // //      -2.4352270240974530e-01, 1.8469288881955251e-01,
+    // //    -1.8951658401333046e-03, -8.6162043491556115e-04));
+    // cv::Mat distCoeffs1 = (cv::Mat_<double>(5, 1) << -2.4352270240974530e-01, 1.8469288881955251e-01,
+    //                        -1.8951658401333046e-03, -8.6162043491556115e-04, 0.);
+    // // cv::Mat K2 = cv::Mat(cv::Matx33d(
+    // //     1994.72443215177, 0, 881.901669489577,
+    // //     0, 1998.44496010574, 556.330703994452,
+    // //     0, 0, 1));
+    // cv::Mat K2 = cv::Mat(cv::Matx33d(
+    //     1.6515124810046834e+03, 0., 9.5641812787368167e+02, 0.,
+    //     1.6532627919168356e+03, 5.0407186507061311e+02, 0., 0., 1.));
+    // // cv::Mat distCoeffs2 = cv::Mat(cv::Matx41d(
+    // //     -0.243547179711356, 0.183777511637158,
+    // //     -0.00165050761251720, -0.000625729681232135));
+    // // cv::Mat distCoeffs2 = cv::Mat(cv::Matx41d(
+    // //     -4.0711389870291248e-01, 1.7521138732705704e-01,
+    // //     -1.5060062330082536e-03, 3.8545430851559504e-04));
+    // cv::Mat distCoeffs2 = (cv::Mat_<double>(5, 1) << -4.0711389870291248e-01, 1.7521138732705704e-01,
+    //                        -1.5060062330082536e-03, 3.8545430851559504e-04, 0.);
+    // // cameraMatrix[0] = K1;
+    // // cameraMatrix[1] = K2;
+    // // distCoeffs[0] = distCoeffs1;
+    // // distCoeffs[1] = distCoeffs2;
+    //cout << "objectPoints.at(1) = " << objectPoints.at(1) << endl;
+    //cout << "cameraMatrix[0] = " << cameraMatrix[0] << endl;
+    //cout << "cameraMatrix[1] = " << cameraMatrix[1] << endl;
     Mat R, T, E, F; //R旋转矩阵 T平移矩阵 E本征矩阵 F输出基本矩阵
 
+    cv::Mat K1 = (cv::Mat_<double>(3, 3) << 1210.80848799380, 0, 1030.15171709705,
+                  0, 1200.72633122232, 526.926907710212,
+                  0, 0, 1);
+    cv::Mat K2 = (cv::Mat_<double>(3, 3) << 1148.29076225360, 0, 933.844539548117,
+                  0, 1148.04008128052, 549.669448597396,
+                  0, 0, 1);
+    cv::Mat diff1 = (cv::Mat_<double>(4, 1) << -0.340457891725979, 0.125829308691339,
+                     -0.00179305443517940, -0.0182089027925910);
+    cv::Mat diff2 = (cv::Mat_<double>(4, 1) << -0.363061254145000, 0.125601126142260,
+                     -0.000695062925281247, 0.00904383492966770);
+    cameraMatrix[0] = K1;
+    cameraMatrix[1] = K2;
+    distCoeffs[0] = diff1;
+    distCoeffs[1] = diff2;
     //undistort check
     //cv::undistort();
+    for (i = j = 0; i < nimages; i++)
+    {
+        for (k = 0; k < 2; k++) //依次寻找左右图片
+        {
+            const string &filename = imagelist[i * 2 + k];
+            Mat img = imread(filename, 1); //载入灰度图 0代表灰度图
+            cv::Mat undistortimage;
+            cv::undistort(img, undistortimage, cameraMatrix[k], distCoeffs[k]);
+            cv::resize(undistortimage, undistortimage, cv::Size(undistortimage.cols / 2, undistortimage.rows / 2), 0, 0, CV_INTER_LINEAR);
+            string str;
+            if (k == 0)
+            {
+                str = "left" + filename;
+            }
+            else
+            {
+                str = "right " + filename;
+            }
+            cv::imshow(str, undistortimage);
+            cv::waitKey(1);
+        }
+    }
+
+    //最关键的地方，求解校正后的相机参数
+    //CALIB_FIX_INTRINSIC
+    // double rms = stereoCalibrate(objectPoints, imagePoints[1], imagePoints[0],
+    //                              cameraMatrix[1], distCoeffs[1],
+    //                              cameraMatrix[0], distCoeffs[0],
+    //                              imageSize, R, T, E, F,
+    //                              CV_CALIB_FIX_INTRINSIC,
+    //                              TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 30, 9.999999999999999547e-07));
+    double rms = stereoCalibrate(objectPoints, imagePoints[0], imagePoints[1],//迭代太多有问题啊啊啊啊
+                                 cameraMatrix[0], distCoeffs[0],
+                                 cameraMatrix[1], distCoeffs[1],
+                                 imageSize, R, T, E, F,
+                                 CV_CALIB_FIX_INTRINSIC,
+                                 TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 1, 100));//以matlab为准。。。
+    // double rms = stereoCalibrate(objectPoints, imagePoints[0], imagePoints[1],
+    //                              cameraMatrix[0], distCoeffs[0],
+    //                              cameraMatrix[1], distCoeffs[1],
+    //                              imageSize, R, T, E, F,
+    //                              CALIB_FIX_ASPECT_RATIO +
+    //                                  CALIB_ZERO_TANGENT_DIST +
+    //                                  CALIB_USE_INTRINSIC_GUESS +
+    //                                  CALIB_SAME_FOCAL_LENGTH +
+    //                                  CALIB_RATIONAL_MODEL +
+    //                                  CALIB_FIX_K3 + CALIB_FIX_K4 + CALIB_FIX_K5+ CALIB_FIX_K6,
+    //                              TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, 1e-5));
+    cout << "done with RMS error=" << rms << endl;
+    cout << "cameraMatrix[0] = " << cameraMatrix[0] << endl;
+    cout << "cameraMatrix[1] = " << cameraMatrix[1] << endl;
+    cout << "distCoeffs[0] = " << distCoeffs[0] << endl;
+    cout << "distCoeffs[1] = " << distCoeffs[1] << endl;
+    cout << "R = " << R << endl;
+    cout << "T = " << T << endl;
+    cout << "E = " << E << endl;
+    cout << "F = " << F << endl;
+    // F = (cv::Mat_<double>(3, 3) << -2.90365098525388e-06, -2.43985429687037e-05, -0.0135282464577077,
+    //      2.22113720288687e-05, -1.39978509403813e-06, -0.130553767933778,
+    //      0.0361089749372620, 0.150398759722962, -22.2154654202392);
+    F = (cv::Mat_<double>(3, 3) << -1.29240022127073e-06, -1.42218285664285e-05, 0.0357494515015725,
+         -9.07755103850985e-05, -4.16352346426982e-05, 1.51946364371862,
+         0.0995592761299502, -1.30974600063752, -262.620091744838);
+    F = F.t();
+    cout << "F = " << F << endl;
+    F = F * (1.0 / -262.620091744838);
+    cout << "F = " << F << endl;
+    R = (cv::Mat_<double>(3, 3) << 0.994438182887672, -0.0557182425785059, -0.0893766068892123,
+         0.0526727439156626, 0.997959798194518, -0.0360807876293297,
+         0.0912046186520236, 0.0311724017605403, 0.995344161034272);
+    R = R.t();
+    T = (cv::Mat_<double>(3, 1) << -1617.70652117081, 31.6409906914789, 18.5049367438881);
+    E = (cv::Mat_<double>(3, 3) << -1.79690183222168, -19.6088148040537, 30.9168320113695,
+         -126.183104134755, -57.3934196426593, 1611.86247581333,
+         58.6707550794259, -1616.07269120550, -53.3136020983709);
+    E = E.t();
+
+    // //undistort check
+    // //cv::undistort();
     // for (i = j = 0; i < nimages; i++)
     // {
     //     for (k = 0; k < 2; k++) //依次寻找左右图片
@@ -208,37 +348,12 @@ StereoCalib(const vector<string> &imagelist, Size boardSize, float squareSize, b
     //         const string &filename = imagelist[i * 2 + k];
     //         Mat img = imread(filename, 0); //载入灰度图 0代表灰度图
     //         cv::Mat undistortimage;
-    //         cv::undistort(img,undistortimage,cameraMatrix[k],distCoeffs[k]);
-    //         cv::resize(undistortimage,undistortimage,cv::Size(undistortimage.cols / 2, undistortimage.rows / 2), 0, 0, CV_INTER_LINEAR);
-    //         cv::imshow(filename,undistortimage);
+    //         cv::undistort(img, undistortimage, cameraMatrix[k], distCoeffs[k]);
+    //         cv::resize(undistortimage, undistortimage, cv::Size(undistortimage.cols / 2, undistortimage.rows / 2), 0, 0, CV_INTER_LINEAR);
+    //         cv::imshow(filename, undistortimage);
     //         cv::waitKey(0);
     //     }
     // }
-
-    //最关键的地方，求解校正后的相机参数
-    //CALIB_FIX_INTRINSIC
-    // double rms = stereoCalibrate(objectPoints, imagePoints[0], imagePoints[1],
-    //                              cameraMatrix[0], distCoeffs[0],
-    //                              cameraMatrix[1], distCoeffs[1],
-    //                              imageSize, R, T, E, F,
-    //                              CALIB_FIX_INTRINSIC,
-    //                              TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, 1e-5));
-    double rms = stereoCalibrate(objectPoints, imagePoints[0], imagePoints[1],
-                                 cameraMatrix[0], distCoeffs[0],
-                                 cameraMatrix[1], distCoeffs[1],
-                                 imageSize, R, T, E, F,
-                                 CALIB_FIX_ASPECT_RATIO +
-                                     CALIB_ZERO_TANGENT_DIST +
-                                     CALIB_USE_INTRINSIC_GUESS +
-                                     CALIB_SAME_FOCAL_LENGTH +
-                                     CALIB_RATIONAL_MODEL +
-                                     CALIB_FIX_K3 + CALIB_FIX_K4 + CALIB_FIX_K5,
-                                 TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, 1e-5));
-    cout << "done with RMS error=" << rms << endl;
-    cout << "cameraMatrix[0] = " << cameraMatrix[0] << endl;
-    cout << "cameraMatrix[1] = " << cameraMatrix[1] << endl;
-    cout << "distCoeffs[0] = " << distCoeffs[0] << endl;
-    cout << "distCoeffs[1] = " << distCoeffs[1] << endl;
 
     // CALIBRATION QUALITY CHECK
     // because the output fundamental matrix implicitly
@@ -252,11 +367,26 @@ StereoCalib(const vector<string> &imagelist, Size boardSize, float squareSize, b
     {
         int npt = (int)imagePoints[0][i].size();
         Mat imgpt[2];
+        Mat imgptundist[2];
+        //cv::Mat img[2];
         for (k = 0; k < 2; k++)
         {
             imgpt[k] = Mat(imagePoints[k][i]);
-            undistortPoints(imgpt[k], imgpt[k], cameraMatrix[k], distCoeffs[k], Mat(), cameraMatrix[k]);
-            computeCorrespondEpilines(imgpt[k], k + 1, F, lines[k]);
+            undistortPoints(imgpt[k], imgptundist[k], cameraMatrix[k], distCoeffs[k], Mat(), cameraMatrix[k]);
+            // string filename = imagelist[i * 2 + k]; //left 0   ;right  1
+            // if (k == 0)
+            // {
+            //     cv::Mat img = imread(filename, 0); //载入灰度图 0代表灰度图
+            //     cv::Mat imgundist;
+            //     //cv::resize(img, img, cv::Size(img.cols / 2, img.rows / 2), 0, 0, INTER_LINEAR);
+            //     //cv::imshow("distort" + filename, img);
+            //     //cv::waitKey(500);
+            //     cv::undistort(img, imgundist, cameraMatrix[k], distCoeffs[k]);
+            //     cv::resize(imgundist, imgundist, cv::Size(imgundist.cols / 2, imgundist.rows / 2), 0, 0, INTER_LINEAR);
+            //     cv::imshow("undistort" + filename, imgundist);
+            //     cv::waitKey(1);
+            // }
+            computeCorrespondEpilines(imgptundist[k], k + 1, F, lines[k]);
         }
         for (j = 0; j < npt; j++)
         {
@@ -422,7 +552,7 @@ int main(int argc, char **argv)
     Size boardSize;
     string imagelistfn;
     bool showRectified;
-    cv::CommandLineParser parser(argc, argv, "{w|9|}{h|7|}{s|0.020|}{nr||}{help||}{@input|/home/wys/slam/camera-co-calib/calibStereo/stereo_calib.xml|}");
+    cv::CommandLineParser parser(argc, argv, "{w|9|}{h|6|}{s|0.020|}{nr||}{help||}{@input|/home/wys/slam/camera-calib/calibstereo/stereo_calib2.xml|}");
     if (parser.has("help"))
         return print_help();
     showRectified = !parser.has("nr");
@@ -454,6 +584,6 @@ int main(int argc, char **argv)
         std::cout << "image.name = " << (string)*it << std::endl;
     }
 
-    StereoCalib(imagelist, boardSize, squareSize, true, true, showRectified);
+    StereoCalib(imagelist, boardSize, squareSize, false, true, showRectified);
     return 0;
 }

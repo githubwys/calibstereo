@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named png2jpg
+
+# Build rule for target.
+png2jpg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 png2jpg
+.PHONY : png2jpg
+
+# fast build rule for target.
+png2jpg/fast:
+	$(MAKE) -f CMakeFiles/png2jpg.dir/build.make CMakeFiles/png2jpg.dir/build
+.PHONY : png2jpg/fast
+
+#=============================================================================
 # Target rules for targets named calibStereo
 
 # Build rule for target.
@@ -135,6 +148,33 @@ trimpictures: cmake_check_build_system
 trimpictures/fast:
 	$(MAKE) -f CMakeFiles/trimpictures.dir/build.make CMakeFiles/trimpictures.dir/build
 .PHONY : trimpictures/fast
+
+png2jpg.o: png2jpg.cpp.o
+
+.PHONY : png2jpg.o
+
+# target to build an object file
+png2jpg.cpp.o:
+	$(MAKE) -f CMakeFiles/png2jpg.dir/build.make CMakeFiles/png2jpg.dir/png2jpg.cpp.o
+.PHONY : png2jpg.cpp.o
+
+png2jpg.i: png2jpg.cpp.i
+
+.PHONY : png2jpg.i
+
+# target to preprocess a source file
+png2jpg.cpp.i:
+	$(MAKE) -f CMakeFiles/png2jpg.dir/build.make CMakeFiles/png2jpg.dir/png2jpg.cpp.i
+.PHONY : png2jpg.cpp.i
+
+png2jpg.s: png2jpg.cpp.s
+
+.PHONY : png2jpg.s
+
+# target to generate assembly for a file
+png2jpg.cpp.s:
+	$(MAKE) -f CMakeFiles/png2jpg.dir/build.make CMakeFiles/png2jpg.dir/png2jpg.cpp.s
+.PHONY : png2jpg.cpp.s
 
 stereo_calib.o: stereo_calib.cpp.o
 
@@ -197,9 +237,13 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... png2jpg"
 	@echo "... calibStereo"
 	@echo "... rebuild_cache"
 	@echo "... trimpictures"
+	@echo "... png2jpg.o"
+	@echo "... png2jpg.i"
+	@echo "... png2jpg.s"
 	@echo "... stereo_calib.o"
 	@echo "... stereo_calib.i"
 	@echo "... stereo_calib.s"
